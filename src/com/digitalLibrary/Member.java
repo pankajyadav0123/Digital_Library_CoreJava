@@ -1,22 +1,22 @@
-package com.digitalLibrary;
+package com.project;
 
 //Member Class
 class Member {
-    private int memberId;
-    private String name;
-    private String email;
-    private String phoneNumber;
+  private int memberId;
+  private String name;
+  private String email;
+  private String phoneNumber;
 
-    //Constructor
-    public Member(int memberId, String name, String email, String phoneNumber) {
-        this.memberId = memberId;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-    
-    // Getters and setters
-    public int getMemberId() {
+  //Constructor
+  public Member(int memberId, String name, String email, String phoneNumber) {
+      this.memberId = memberId;
+      this.name = name;
+      this.email = email;
+      this.phoneNumber = phoneNumber;
+  }
+  
+  // Getters and setters
+  public int getMemberId() {
 		return memberId;
 	}
 
@@ -58,6 +58,6 @@ class Member {
 		return "Member [memberId=" + memberId + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
 				+ "]";
 	}
-    
-    
+  
+  
 }
