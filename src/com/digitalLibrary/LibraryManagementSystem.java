@@ -1,5 +1,4 @@
-package com.digitalLibrary;
-
+package com.project;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,12 +18,16 @@ public class LibraryManagementSystem {
     public static void main(String[] args) {
         while (true) {
             if (isStopDateTimeReached()) {
-                stopApplication();
+                System.out.println("Start the Application : LibraryManagementSystem");
+                for(int i = 0;i<48;i++) {
+                	System.out.print("=");
+                }
+                System.out.println();
             }
             
-            System.out.println("1. Add Book");
+            System.out.println("1. Add New Book");
             System.out.println("2. Remove Book");
-            System.out.println("3. Search Book by keyword");
+            System.out.println("3. Search Book by Id");
             System.out.println("4. Display All Books");
             System.out.println();
             System.out.println("5. Add Member");
@@ -75,7 +78,7 @@ public class LibraryManagementSystem {
                     stopApplication();
                     break;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice. Please try again");
             }
         }
     }
@@ -106,7 +109,8 @@ public class LibraryManagementSystem {
 
         Book book = new Book(bookId++, title, author, publicationYear);
         library.addBook(book);
-        System.out.println("Book added successfully.");
+        System.out.println("Book added successfully");
+        System.out.println();
     }
 	
 	//Remove Book
@@ -118,9 +122,11 @@ public class LibraryManagementSystem {
         Book book = library.findBookById(id);
         if (book != null) {
             library.removeBook(id);
-            System.out.println("Book removed successfully.");
+            System.out.println("Book removed successfully");
+            System.out.println();
         } else {
-            System.out.println("Book not found.");
+            System.out.println("Book not found");
+            System.out.println();
         }
     }
     
@@ -139,11 +145,13 @@ public class LibraryManagementSystem {
         }
 
         if (foundBooks.isEmpty()) {
-            System.out.println("No books found.");
+            System.out.println("No books found");
+            System.out.println();
         } else {
-            System.out.println("Found books:");
+            System.out.println("Found books");
             for (Book book : foundBooks) {
-                System.out.println(book.getBookId() + ". " + book.getTitle() + " by " + book.getAuthor());
+                System.out.println(book.getBookId() + "--> " + book.getTitle() + " written by " + book.getAuthor());
+                System.out.println();
             }
         }
     }
@@ -152,11 +160,13 @@ public class LibraryManagementSystem {
     private static void displayAllBooks() {
         List<Book> books = library.getAllBooks();
         if (books.isEmpty()) {
-            System.out.println("No books in the library.");
+            System.out.println("No books in the library");
+            System.out.println();
         } else {
-            System.out.println("List of all books:");
+            System.out.println("List of all books");
             for (Book book : books) {
-                System.out.println(book.getBookId() + ". " + book.getTitle() + " by " + book.getAuthor());
+                System.out.println(book.getBookId() + "--> " + book.getTitle() + " written by " + book.getAuthor());
+                System.out.println();
             }
         }
     }
@@ -164,94 +174,104 @@ public class LibraryManagementSystem {
     //Add Member
     private static void addMember() {
         System.out.println("Member Id: "+memberId);
-        System.out.print("Enter member name: ");
+        System.out.print("Enter member name ");
         String name = scanner.nextLine();
-        System.out.print("Enter member email: ");
+        System.out.print("Enter member email ");
         String email = scanner.nextLine();
-        System.out.print("Enter member phone number: ");
+        System.out.print("Enter member phone number ");
         String phoneNumber = scanner.nextLine();
 
         Member member = new Member(memberId++, name, email, phoneNumber);
         library.addMember(member);
-        System.out.println("Member added successfully.");
+        System.out.println("Member added successfully");
+        System.out.println();
     }
 
     // Remove Member
     private static void removeMember() {
-        System.out.print("Enter member id to remove: ");
+        System.out.print("Enter member id to remove ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
         Member member = library.findMemberById(id);
         if (member != null) {
             library.removeMember(id);
-            System.out.println("Member removed successfully.");
+            System.out.println("Member removed successfully");
+            System.out.println();
         } else {
-            System.out.println("Member not found.");
+            System.out.println("Member not found");
+            System.out.println();
         }
     }
     
     //Find Member
     private static void findMemberById() {
-        System.out.print("Enter member id to search: ");
+        System.out.print("Enter member id to search ");
         int id = scanner.nextInt();
         scanner.nextLine();
         Member member = library.findMemberById(id);
         if (member != null) {
             System.out.println(member);
-            System.out.println("Member search successfully.");
+            System.out.println("Member search successfully");
+            System.out.println();
         } else {
-            System.out.println("Member not found.");
+            System.out.println("Member not found");
+            System.out.println();
         }
       }
     
     //Issue Book
     private static void issueBook() {
-        System.out.print("Enter member id: ");
+        System.out.print("Enter member id ");
         int memberId = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Enter book id: ");
+        System.out.print("Enter book id ");
         int bookId = scanner.nextInt();
         scanner.nextLine();
 
         if (library.issueBook(memberId, bookId)) {
-            System.out.println("Book issued successfully.");
+            System.out.println("Book issued successfully");
+            System.out.println();
         } else {
-            System.out.println("Unable to issue book. Please check member and book id.");
+            System.out.println("Unable to issue book, Please check member and book id");
+            System.out.println();
         }
     }
     
     //Return Book
     private static void returnBook() {
-        System.out.print("Enter member id: ");
+        System.out.print("Enter member id ");
         int memberId = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Enter book id: ");
+        System.out.print("Enter book id ");
         int bookId = scanner.nextInt();
         scanner.nextLine();
 
         if (library.returnBook(memberId, bookId)) {
-            System.out.println("Book returned successfully.");
+            System.out.println("Book returned successfully");
+            System.out.println();
         } else {
-            System.out.println("Unable to return book. Please check member and book id.");
+            System.out.println("Unable to return book, Please check member and book id");
+            System.out.println();
         }
     }
     
     //Get All Issue Book
     private static void viewIssuedBooks() {
-        System.out.print("Enter member id: ");
+        System.out.print("Enter member id ");
         int memberId = scanner.nextInt();
         scanner.nextLine();
 
         List<Book> issuedBooks = library.viewIssuedBooks(memberId);
         if (issuedBooks.isEmpty()) {
-            System.out.println("No books issued to this member.");
+            System.out.println("No books issued to this member");
+            System.out.println();
         } else {
-            System.out.println("Books issued to member:");
+            System.out.println("Books issued to member");
             for (Book book : issuedBooks) {
-                System.out.println(book.getBookId() + ". " + book.getTitle() + " by " + book.getAuthor());
+                System.out.println(book.getBookId() + "--> " + book.getTitle() + " written by " + book.getAuthor());
+                System.out.println();
             }
         }
     }
 }
-
