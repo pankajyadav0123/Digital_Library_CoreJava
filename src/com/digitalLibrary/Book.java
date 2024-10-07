@@ -1,22 +1,22 @@
-package com.digitalLibrary;
+package com.project;
 
 //Book Class
 class Book {
-    private int bookId;
-    private String title;
-    private String author;
-    private int publicationYear;
+  private int bookId;
+  private String title;
+  private String author;
+  private int publicationYear;
 
-    //Constructor
-    public Book(int bookId, String title, String author, int publicationYear) {
-        this.bookId = bookId;
-        this.title = title;
-        this.author = author;
-        this.publicationYear = publicationYear;
-    }
-    
-    // Getters and setters
-    public int getBookId() {
+  //Constructor
+  public Book(int bookId, String title, String author, int publicationYear) {
+      this.bookId = bookId;
+      this.title = title;
+      this.author = author;
+      this.publicationYear = publicationYear;
+  }
+  
+  // Getters and setters
+  public int getBookId() {
 		return bookId;
 	}
 
@@ -59,6 +59,6 @@ class Book {
 		return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear + "]";
 	}
 	
-    
+  
 	
 }
